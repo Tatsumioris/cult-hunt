@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
+    //Repris du code Damageable
     public float maxHealth = 10f;
 
     public bool destroyOnDeath = false;
@@ -23,7 +25,7 @@ public class Health : MonoBehaviour
         if (IsDead)
             return false;
 
-        _heath -= damages;
+        _health -= damage;
         if (_health <= 0)
         {
             _health = 0f;

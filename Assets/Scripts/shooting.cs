@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class shooting : MonoBehaviour
 {
+    // repris du code Cannon_FINAL
     public float fireRateMultiplier = 3f;
     public float damagesMultiplier = 1f;
     public float range = 6f;
@@ -25,21 +26,21 @@ public class shooting : MonoBehaviour
         if (Input.GetMouseButton(0) && _fireCooldown <= 0f)
         {
             Fire();
-            _fireCooldown = weapon.fireRate / fireRateMultiplier;
+           //_fireCooldown = weapon.fireRate / fireRateMultiplier;
         }
     }
 
     private void Fire()
     {
-        Projectile projectileInstance = Instantiate(weapon.projectilePrefab, Projectile.position, Quaternion.identity);
-        projectileInstance.Launch(weapon.damages * damagesMultiplier, weapon.speed, cannonRenderer.transform.up, range);
+        //Projectile projectileInstance = Instantiate(weapon.projectilePrefab, Projectile.position, Quaternion.identity);
+        //projectileInstance.Launch(weapon.damages * damagesMultiplier, weapon.speed, transform.right, range);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.TryGetComponent(out Enemy enemy))
+        //if (collision.gameObject.TryGetComponent(out enemy enemy))
         {
-            Destroy(enemy.gameObject);
+            //Destroy(enemy.gameObject);
             _damageable.TakeDamages(1);
         }
     }

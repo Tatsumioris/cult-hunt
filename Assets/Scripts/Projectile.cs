@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    //repris du code projectile
     public float radius = 1f;
     public LayerMask targetLayer = ~0;
     private float _damages = 0f;
