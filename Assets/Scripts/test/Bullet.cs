@@ -6,18 +6,20 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float speed = 15.0f;
+    public Vector3 bulletDirection;
 
     // Update is called once per frame
     void Update()
     {
-        transform.position += transform.right * Time.deltaTime * speed;
+        transform.position += bulletDirection * Time.deltaTime * speed;
+        Debug.Log($"bulletDirection: {bulletDirection}");
     }
 
     private void OnTriggerEnter2D(Collider2D collision) // Quand il rentre en collision avec un Collider2D il est détruit
     {
         Debug.Log("Bullet hit enemy");
 
-        Cultiste enemy = collision.gameObject.GetComponent<Cultiste>();
+        CultisteHealth enemy = collision.gameObject.GetComponent<CultisteHealth>();
         if (enemy != null)
         {
             enemy.GetDamage();

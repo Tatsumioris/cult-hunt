@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -4814285310007972628}
   - component: {fileID: -8162471137762710863}
   m_Layer: 8
-  m_Name: Bullet
+  m_Name: RightBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
+  bulletDirection: {x: 1, y: 0, z: 0}
 --- !u!61 &-8162471137762710863
 BoxCollider2D:
   m_ObjectHideFlags: 0

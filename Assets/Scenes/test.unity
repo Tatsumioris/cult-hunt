@@ -370,7 +370,7 @@ Transform:
   m_GameObject: {fileID: 1089859706}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.48999977, y: 0.24000001, z: 0}
+  m_LocalPosition: {x: 0.4899998, y: 0.24000001, z: 0}
   m_LocalScale: {x: 0.2099, y: 0.2099, z: 0.2099}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -439,8 +439,9 @@ GameObject:
   - component: {fileID: 1524011622}
   - component: {fileID: 1524011621}
   - component: {fileID: 1524011623}
-  - component: {fileID: 1524011624}
   - component: {fileID: 1524011625}
+  - component: {fileID: 1524011627}
+  - component: {fileID: 1524011626}
   m_Layer: 7
   m_Name: Cultiste
   m_TagString: Untagged
@@ -560,19 +561,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
---- !u!114 &1524011624
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1524011620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 145b0033707131a42943ffd5e34ced44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 5
 --- !u!50 &1524011625
 Rigidbody2D:
   serializedVersion: 4
@@ -600,6 +588,33 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1524011626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524011620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e74cc73b75a56b4f843f56e8be4fa3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1993057054}
+  speed: 2
+--- !u!114 &1524011627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524011620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 145b0033707131a42943ffd5e34ced44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
 --- !u!1 &1993057054
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,8 +646,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e0de43ad8398c441acca8d68b5531ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 8778587686424375106, guid: 73eae000004145145822cf8dddc6e4f4, type: 3}
+  leftBulletPrefab: {fileID: 8778587686424375106, guid: f3767c031ebafcc47a697c418ed006a8, type: 3}
+  rightBulletPrefab: {fileID: 8778587686424375106, guid: 73eae000004145145822cf8dddc6e4f4, type: 3}
   firePoint: {fileID: 1089859707}
+  gunFacingRight: 1
+  firePointDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &1993057056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -646,6 +664,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  FirePoint: {fileID: 1089859706}
+  gun: {fileID: 1993057055}
 --- !u!212 &1993057057
 SpriteRenderer:
   m_ObjectHideFlags: 0
