@@ -8,48 +8,91 @@ public class mouvement : MonoBehaviour
 
 {
     public float speed;
+    public float crouchSpeed;
     public GameObject FirePoint;
     public Gun gun;
 
+    public Transform ceilingCheck;
+    public float ceilingRadius = 0.2f;
+    public LayerMask groundLayer;
+
+
     private bool isFacingRight = true;
+    private bool isCrouching = false;
     private Vector3 originalFirePointLocalPos;
+    private Rigidbody2D rb;
+    private BoxCollider2D boxCollider;
+    private float originalHeight;
+
 
     private void Start()
     {
+        rb = GetComponent<Rigidbody2D>();           // On prend le collider puis on garde sa hauteur d'origine
+        boxCollider = GetComponent<BoxCollider2D>();
+        originalHeight = boxCollider.size.y;
         originalFirePointLocalPos = FirePoint.transform.localPosition;
     }
     void Update()
     {
+        HandleCrouch();
+
         Vector3 moveDirection = new Vector3();
 
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.D))
         {
             moveDirection.x += 1;
             if (!isFacingRight) Flip();
         }
 
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.A))
         {
             moveDirection.x -= 1;
-            //transform.Rotate(0f, 180f, 0f);
             if (isFacingRight) Flip();
 
         }
-
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            moveDirection.y += 1;
-        }
+        float currentSpeed = isCrouching ? crouchSpeed : speed;
 
         if (moveDirection != Vector3.zero)
         {
-            transform.position += moveDirection * speed * Time.deltaTime;
+            transform.position += moveDirection * currentSpeed * Time.deltaTime;
             
         }
   
     }
-    
-    void Flip ()
+
+    void HandleCrouch()
+    {
+        bool crouchInput = Input.GetKey(KeyCode.S);
+
+        if (crouchInput)
+        {
+            if (!isCrouching)
+            {
+                isCrouching = true;
+                boxCollider.size = new Vector3(boxCollider.size.x, originalHeight / 2);
+                boxCollider.offset = new Vector3(boxCollider.offset.x, boxCollider.offset.y - originalHeight / 4);
+                GetComponent<SpriteRenderer>().color = Color.red;
+                Debug.Log("Crouch ON");
+            }
+        }
+        else
+        {
+            if (!Physics2D.OverlapCircle(ceilingCheck.position, ceilingRadius, groundLayer))
+            {
+                if (isCrouching)
+                {
+                    isCrouching = false;
+                    boxCollider.size = new Vector3(boxCollider.size.x, originalHeight);
+                    boxCollider.offset = new Vector3(boxCollider.offset.x, boxCollider.offset.y + originalHeight / 4);
+                    GetComponent<SpriteRenderer>().color = Color.white;
+                    Debug.Log("OOH DEBOUT");
+
+                }
+            }
+        }
+    }
+
+    void Flip()
     {
         isFacingRight = !isFacingRight;
 
@@ -63,5 +106,14 @@ public class mouvement : MonoBehaviour
 
         Debug.Log("Flip");
         gun.GunFlip();
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        if (ceilingCheck != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(ceilingCheck.position, ceilingRadius);
+        }
     }
 }

@@ -22,10 +22,10 @@ public class CultisteAI : MonoBehaviour
 
         transform.position = Vector3.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
 
-        if (distance < 2) {
+        if (distance < 10) {
             speed = 0f;
         }
-        else if (distance > 2)
+        else if (distance > 10)
             speed = 1f;
     }
 }
