@@ -11,8 +11,11 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         transform.position += bulletDirection * Time.deltaTime * speed;
         Debug.Log($"bulletDirection: {bulletDirection}");
+
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision) // Quand il rentre en collision avec un Collider2D il est détruit
