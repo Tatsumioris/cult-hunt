@@ -34,16 +34,32 @@ public class CultisteBullet : MonoBehaviour
 
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        /*if (other.gameObject.CompareTag("Player"))
-        {
-            other.gameObject.GetComponent<Health>().health--;
-            Destroy(gameObject);
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Player"))
+    //    {
+    //        collision.gameObject.GetComponent<Health>().health--;
+    //        Destroy(gameObject);
             
-        }*/
-        Debug.Log("PREND CA BORDEL");
+    //    }
+    //    Debug.Log("PREND CA");
 
 
+    //}
+
+    private void OnTriggerEnter2D(Collider2D collision) // Quand il rentre en collision avec un Collider2D il est détruit
+    {
+        Debug.Log("Bullet hit player", this); // le this fait que quand on double clique sur le message il nous ramène directement ici
+
+        Health player = collision.gameObject.GetComponent<Health>();
+        if (player != null)
+        {
+            player.TakeDamage(); // ctrl + r r renomme dans tout les scripts
+            Debug.Log("Degat reçu", this);      
+        }
+
+        gameObject.SetActive(false);
+        Destroy(gameObject, 2.0f);
     }
 }
+

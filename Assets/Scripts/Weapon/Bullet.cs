@@ -25,7 +25,7 @@ public class Bullet : MonoBehaviour
         CultisteHealth enemy = collision.gameObject.GetComponent<CultisteHealth>();
         if (enemy != null)
         {
-            enemy.GetDamage();
+            enemy.TakeDamage();
         }
 
         gameObject.SetActive(false);

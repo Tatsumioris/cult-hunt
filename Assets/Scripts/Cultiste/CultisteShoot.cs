@@ -38,7 +38,7 @@ public class CultisteShoot : MonoBehaviour
     void shoot()
     {
         Instantiate(CultisteBullet, bulletPos.position, Quaternion.identity);
-        // -> GameObject bulletInstance = Instantiate(CultisteBullet, bulletPos.position, Quaternion.identity);
+        // Debug.Break();                     // Debug.Break fait que quand il est appelé il stop directement le play
         Debug.Log("Shoot from ennemy");
     }
 }

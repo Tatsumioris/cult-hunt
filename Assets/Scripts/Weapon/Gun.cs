@@ -46,7 +46,7 @@ public class Gun : MonoBehaviour
             CultisteHealth enemy = hit.collider.gameObject.GetComponent<CultisteHealth>();
             if (enemy != null)
             {
-                enemy.GetDamage();
+                enemy.TakeDamage();
             } 
         }
     }

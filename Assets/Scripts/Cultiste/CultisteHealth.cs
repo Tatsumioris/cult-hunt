@@ -6,9 +6,9 @@ public class CultisteHealth : MonoBehaviour
 {
     public float health = 1;
 
-    public void GetDamage()
+    public void TakeDamage()
     {
-        health--; //Reduis la vie de celui qui a ce script "health--;" raccourci pour dire que la vie est réduite de 1
+        health--; //Reduis la vie de celui qui a "health--;" raccourci pour dire que la vie est réduite de 1
         
         Debug.Log("Enemy took damage");
         if (health <= 0)
