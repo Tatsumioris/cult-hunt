@@ -24,6 +24,8 @@ public class mouvement : MonoBehaviour
     private BoxCollider2D boxCollider;
     private float originalHeight;
 
+    public Anim anim;
+
 
     private void Start()
     {
@@ -42,13 +44,19 @@ public class mouvement : MonoBehaviour
         {
             moveDirection.x += 1;
             if (!isFacingRight) Flip();
+            anim.isMoving = true;
         }
 
         if (Input.GetKey(KeyCode.A))
         {
             moveDirection.x -= 1;
             if (isFacingRight) Flip();
+            anim.isMoving = true;
 
+        }
+        else
+        {
+            anim.isMoving = false;
         }
         float currentSpeed = isCrouching ? crouchSpeed : speed;
 
