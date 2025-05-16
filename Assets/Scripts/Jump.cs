@@ -7,6 +7,7 @@ public class Jump : MonoBehaviour
     public float jump;
     public Rigidbody2D rb;
     public bool isJumping;
+    public Gun gun;
 
     private float Move;
 
@@ -25,6 +26,7 @@ public class Jump : MonoBehaviour
         { 
             rb.AddForce(new Vector3(rb.velocity.x, jump));
             animator.SetBool("IsJumpingR", true);
+            
 
         }
         
@@ -36,17 +38,17 @@ public class Jump : MonoBehaviour
         if(other.gameObject.CompareTag("Floor"))
         {
             isJumping = false;
+            GetComponent<Gun>().enabled = true;
+            animator.SetBool("IsJumpingR", false);
         }
         
         if(other.gameObject.CompareTag("Box"))
         {
             isJumping = false;
-        }
-
-        else
-        {
+            GetComponent<Gun>().enabled = true;
             animator.SetBool("IsJumpingR", false);
         }
+
 
     }
 
@@ -55,12 +57,16 @@ public class Jump : MonoBehaviour
         if (other.gameObject.CompareTag("Floor"))
         {
             isJumping = true;
+            GetComponent<Gun>().enabled = false;
         }
 
         if (other.gameObject.CompareTag("Box"))
         {
             isJumping = true;
+            GetComponent<Gun>().enabled = false;
         }
+
+
 
         //else
         //{

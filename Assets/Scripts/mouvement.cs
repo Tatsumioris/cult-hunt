@@ -49,11 +49,6 @@ public class mouvement : MonoBehaviour
             animator.SetBool("IsWalking", true);
 
         }
-        else
-        {
-            animator.SetBool("IsWalking", false);
-
-        }
 
 
         if (Input.GetKey(KeyCode.A))
@@ -61,13 +56,13 @@ public class mouvement : MonoBehaviour
             moveDirection.x -= 1;
             if (isFacingRight) Flip();
             anim.isMoving = true;
-            //animator.SetBool("IsWalking", true);
+            animator.SetBool("IsWalking", true);
 
         }
-        else
+        if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
         {
             anim.isMoving = false;
-            //animator.SetBool("IsWalking", false);
+            animator.SetBool("IsWalking", false);
         }
         float currentSpeed = isCrouching ? crouchSpeed : speed;
 
@@ -95,6 +90,7 @@ public class mouvement : MonoBehaviour
                 //GetComponent<SpriteRenderer>().color = Color.red;
                 Debug.Log("Crouch ON");
                 animator.SetBool("IsCrouchingR", true);
+                GetComponent<Gun>().enabled = false;
             }
         }
         else
@@ -109,6 +105,7 @@ public class mouvement : MonoBehaviour
                     GetComponent<SpriteRenderer>().color = Color.white;
                     Debug.Log("OOH DEBOUT");
                     animator.SetBool("IsCrouchingR", false);
+                    GetComponent<Gun>().enabled = true;
 
                 }
             }
@@ -119,16 +116,18 @@ public class mouvement : MonoBehaviour
     {
         isFacingRight = !isFacingRight;
 
-        //Vector3 scale = transform.localScale; //inverse l'échelle sur x et retourne visuellement le personnage
-        //scale.x *= -1;
-        //transform.localScale = scale;
+        Vector3 scale = transform.localScale; //inverse l'échelle sur x et retourne visuellement le personnage
+        scale.x *= -1;
+        transform.localScale = scale;
 
-        Vector3 firePointPos = originalFirePointLocalPos; // bouge le firePoint de l'autre côté 
-        firePointPos.x *= isFacingRight ? 1 : -1;
-        FirePoint.transform.localPosition = firePointPos;
+        //Vector3 firePointPos = originalFirePointLocalPos; // bouge le firePoint de l'autre côté 
+        //firePointPos.x *= isFacingRight ? 1 : -1;
+        //FirePoint.transform.localPosition = firePointPos;
 
         Debug.Log("Flip");
         gun.GunFlip();
+
+
     }
 
     void OnDrawGizmosSelected()

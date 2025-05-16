@@ -10,6 +10,7 @@ public class Gun : MonoBehaviour
     public Transform firePoint;
     public bool gunFacingRight = true;
     public Vector3 firePointDirection;
+    public bool CanShoot;
 
     public Animator animator;
     // Start is called before the first frame update
@@ -21,9 +22,10 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0) && CanShoot)
         {
             Shoot();
+            CanShoot = false;
             animator.SetBool("IsShootingR", true);
 
         }
@@ -31,6 +33,7 @@ public class Gun : MonoBehaviour
         {
             animator.SetBool("IsShootingR", false);
         }
+
     }
 
     void Shoot()
@@ -57,6 +60,22 @@ public class Gun : MonoBehaviour
                 enemy.TakeDamage();
             } 
         }
+
+        //StartCoroutine(fireRate());
+    }
+
+    IEnumerator fireRate()
+    {
+        CanShoot = false;
+
+        yield return new WaitForSeconds(2);
+
+        CanShoot = true;
+    }
+
+    void fireActivate()
+    {
+        CanShoot = true;
     }
 
     public void GunFlip()

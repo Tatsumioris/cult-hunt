@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29065a56637418e43a4bd2bf3d0bc0bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 20
   bulletDirection: {x: 1, y: 0, z: 0}
 --- !u!61 &-8162471137762710863
 BoxCollider2D:
