@@ -25,6 +25,7 @@ public class mouvement : MonoBehaviour
     private float originalHeight;
 
     public Anim anim;
+    public Animator animator;
 
 
     private void Start()
@@ -45,20 +46,32 @@ public class mouvement : MonoBehaviour
             moveDirection.x += 1;
             if (!isFacingRight) Flip();
             anim.isMoving = true;
+            animator.SetBool("IsWalking", true);
+
         }
+        else
+        {
+            animator.SetBool("IsWalking", false);
+
+        }
+
 
         if (Input.GetKey(KeyCode.A))
         {
             moveDirection.x -= 1;
             if (isFacingRight) Flip();
             anim.isMoving = true;
+            //animator.SetBool("IsWalking", true);
 
         }
         else
         {
             anim.isMoving = false;
+            //animator.SetBool("IsWalking", false);
         }
         float currentSpeed = isCrouching ? crouchSpeed : speed;
+
+        
 
         if (moveDirection != Vector3.zero)
         {
@@ -79,8 +92,9 @@ public class mouvement : MonoBehaviour
                 isCrouching = true;
                 boxCollider.size = new Vector3(boxCollider.size.x, originalHeight / 2);
                 boxCollider.offset = new Vector3(boxCollider.offset.x, boxCollider.offset.y - originalHeight / 4);
-                GetComponent<SpriteRenderer>().color = Color.red;
+                //GetComponent<SpriteRenderer>().color = Color.red;
                 Debug.Log("Crouch ON");
+                animator.SetBool("IsCrouchingR", true);
             }
         }
         else
@@ -94,6 +108,7 @@ public class mouvement : MonoBehaviour
                     boxCollider.offset = new Vector3(boxCollider.offset.x, boxCollider.offset.y + originalHeight / 4);
                     GetComponent<SpriteRenderer>().color = Color.white;
                     Debug.Log("OOH DEBOUT");
+                    animator.SetBool("IsCrouchingR", false);
 
                 }
             }

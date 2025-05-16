@@ -10,10 +10,12 @@ public class Gun : MonoBehaviour
     public Transform firePoint;
     public bool gunFacingRight = true;
     public Vector3 firePointDirection;
+
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -22,6 +24,12 @@ public class Gun : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
             Shoot();
+            animator.SetBool("IsShootingR", true);
+
+        }
+        else
+        {
+            animator.SetBool("IsShootingR", false);
         }
     }
 

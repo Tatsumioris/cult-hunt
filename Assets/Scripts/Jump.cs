@@ -10,6 +10,8 @@ public class Jump : MonoBehaviour
 
     private float Move;
 
+    public Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +24,10 @@ public class Jump : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isJumping == false)
         { 
             rb.AddForce(new Vector3(rb.velocity.x, jump));
+            animator.SetBool("IsJumpingR", true);
+
         }
+        
 
     }
 
@@ -38,6 +43,11 @@ public class Jump : MonoBehaviour
             isJumping = false;
         }
 
+        else
+        {
+            animator.SetBool("IsJumpingR", false);
+        }
+
     }
 
     private void OnCollisionExit2D(Collision2D other)
@@ -51,5 +61,10 @@ public class Jump : MonoBehaviour
         {
             isJumping = true;
         }
+
+        //else
+        //{
+        //    animator.SetBool("IsJumpingR", false);
+        //}
     }
 }
