@@ -22,10 +22,10 @@ public class CultisteShoot : MonoBehaviour
 
         float distance = Vector3.Distance(transform.position, player.transform.position);
 
-        if (distance < 10)
+        if (distance < 25)
         {
             timer += Time.deltaTime;
-            if (timer > 2)
+            if (timer > 1.5)
             {
                 timer = 0;
                 shoot();
