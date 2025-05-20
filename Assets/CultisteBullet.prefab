@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.15249251, y: -2.4897, z: 0}
-  m_LocalScale: {x: 1, y: 0.0861, z: 1}
+  m_LocalScale: {x: 1, y: 0.06, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a6d3fa55b7301447a769d6b3ae8805c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 15
+  force: 25
 --- !u!50 &1431390396066897147
 Rigidbody2D:
   serializedVersion: 4

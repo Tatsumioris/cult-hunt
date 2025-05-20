@@ -9,6 +9,9 @@ public class CultisteShoot : MonoBehaviour
 
     private float timer;
     private GameObject player;
+
+    public Anim anim;
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,13 +25,15 @@ public class CultisteShoot : MonoBehaviour
 
         float distance = Vector3.Distance(transform.position, player.transform.position);
 
-        if (distance < 25)
+        if (distance < 20)
         {
             timer += Time.deltaTime;
             if (timer > 1.5)
             {
                 timer = 0;
                 shoot();
+                animator.SetBool("IsShootingC", true);
+
             }
         }
     }
