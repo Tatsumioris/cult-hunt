@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -8162471137762710863}
   - component: {fileID: 7676358172873195139}
   - component: {fileID: 1431390396066897147}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: CultisteBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

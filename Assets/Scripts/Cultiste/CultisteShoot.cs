@@ -6,6 +6,8 @@ public class CultisteShoot : MonoBehaviour
 {
     public GameObject CultisteBullet;
     public Transform bulletPos;
+    public bool CanShoot;
+
 
     private float timer;
     private GameObject player;
@@ -28,7 +30,7 @@ public class CultisteShoot : MonoBehaviour
         if (distance < 20)
         {
             timer += Time.deltaTime;
-            if (timer > 1.5)
+            if (timer > 1)
             {
                 timer = 0;
                 shoot();
@@ -45,5 +47,12 @@ public class CultisteShoot : MonoBehaviour
         Instantiate(CultisteBullet, bulletPos.position, Quaternion.identity);
         // Debug.Break();                     // Debug.Break fait que quand il est appelé il stop directement le play
         Debug.Log("Shoot from ennemy");
+
+
     }
+    //public void StopShooting()
+    //{
+    //    animator.SetBool("IsShootingC", false);
+    //}
+
 }

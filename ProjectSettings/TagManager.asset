@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Floor
   - Box
+  - LevelExit
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - Enemy
   - PlayerBullet
   - Ground
-  - 
+  - CultistBullet
   - 
   - 
   - 
