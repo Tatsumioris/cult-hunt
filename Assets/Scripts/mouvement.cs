@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Tilemaps;
+//using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
@@ -16,6 +16,7 @@ public class mouvement : MonoBehaviour
     public Transform ceilingCheck;
     public float ceilingRadius = 0.2f;
     public LayerMask groundLayer;
+
 
 
     private bool isFacingRight = true;
@@ -35,6 +36,8 @@ public class mouvement : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
         originalHeight = boxCollider.size.y;
         originalFirePointLocalPos = FirePoint.transform.localPosition;
+
+
     }
     void Update()
     {
@@ -48,6 +51,8 @@ public class mouvement : MonoBehaviour
             if (!isFacingRight) Flip();
             anim.isMoving = true;
             animator.SetBool("IsWalking", true);
+            //AudioSource.clip = AudioClip;
+            //AudioSource.Play();
 
         }
 
@@ -58,12 +63,15 @@ public class mouvement : MonoBehaviour
             if (isFacingRight) Flip();
             anim.isMoving = true;
             animator.SetBool("IsWalking", true);
+            //AudioSource.clip = AudioClip;
+            //AudioSource.Play();
 
         }
         if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
         {
             anim.isMoving = false;
             animator.SetBool("IsWalking", false);
+            //AudioSource.Stop();
         }
         float currentSpeed = isCrouching ? crouchSpeed : speed;
 
