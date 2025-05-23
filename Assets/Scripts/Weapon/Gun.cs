@@ -49,19 +49,19 @@ public class Gun : MonoBehaviour
             GameObject bulletInstance = Instantiate(leftBulletPrefab, firePoint.position, firePoint.rotation);
         }
 
-        RaycastHit2D hit = Physics2D.Raycast(firePoint.position, firePointDirection);//Projete un rayon depuis le firePoint et orienter vers la droite
-        if (hit) 
-        {
-            Debug.Log("Hit" + hit.collider.gameObject);
+        //RaycastHit2D hit = Physics2D.Raycast(firePoint.position, firePointDirection);//Projete un rayon depuis le firePoint et orienter vers la droite
+        //if (hit) 
+        //{
+        //    Debug.Log("Hit" + hit.collider.gameObject);
 
-            CultisteHealth enemy = hit.collider.gameObject.GetComponent<CultisteHealth>();
-            if (enemy != null)
-            {
-                enemy.TakeDamage();
-            } 
-        }
+        //    CultisteHealth enemy = hit.collider.gameObject.GetComponent<CultisteHealth>();
+        //    if (enemy != null)
+        //    {
+        //        enemy.TakeDamage();
+        //    } 
+        //}
 
-        //StartCoroutine(fireRate());
+        StartCoroutine(fireRate());
     }
 
     IEnumerator fireRate()
@@ -76,6 +76,7 @@ public class Gun : MonoBehaviour
     void fireActivate()
     {
         CanShoot = true;
+        
     }
 
     public void GunFlip()
